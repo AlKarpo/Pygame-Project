@@ -44,7 +44,6 @@ class Menu:
 
 
 class Board:
-
     def __init__(self):
         self.width = width = 50
         self.height = height = 50
@@ -60,15 +59,7 @@ class Board:
         self.cell_size = cell_size
 
     def render(self, screen):
-        font = pygame.font.Font(None, 50)
-        text = font.render("Coming soon", True, (100, 255, 100))
-        text_x = 500 // 2 - text.get_width() // 2
-        text_y = 500 // 2 - text.get_height() // 2
-        text_w = text.get_width()
-        text_h = text.get_height()
-        screen.blit(text, (text_x, text_y))
-        pygame.draw.rect(screen, (0, 255, 0), (text_x - 10, text_y - 10,
-                                               text_w + 20, text_h + 20), 1)
+        pygame.draw.rect(screen, (255, 255, 255), (50, 50, 320, 640), 3)
 
 
 pygame.init()
