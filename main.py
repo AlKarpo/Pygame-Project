@@ -141,6 +141,7 @@ class Figures(pygame.sprite.Sprite):
         #self.green.rect = self.green.image.get_rect()
         #all_sprites.add(self.green)
 
+
         self.sprite.rect.x = 180
         self.sprite.rect.y = 52
 
