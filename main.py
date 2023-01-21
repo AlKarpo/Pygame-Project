@@ -44,6 +44,7 @@ scores = {0: 0, 1: 100, 2: 300, 3: 600, 4: 1000}
 
 class Menu:
 
+    # Отрисовка пунктов
     def display_main_menu(self, screen):
         font_title = pygame.font.Font('data\Teletactile-3zavL.ttf', 75)
         self.font_text = pygame.font.Font('data\Teletactile-3zavL.ttf', 32)
@@ -59,6 +60,7 @@ class Menu:
         screen.blit(text_info, (310, 440))
         pygame.draw.line(screen, (80, 255, 100), (145, 200), (580, 200), 5)
 
+    # Интерфейс меню
     def choosing_punkt(self, mouse_pos):
         x, y = mouse_pos
         if 223 < x < 493 and 290 < y < 330:
@@ -96,6 +98,7 @@ class Board:
             for y in range(H):
                 pygame.draw.rect(screen, (30, 30, 30), (side * x, side * y, side, side), 1)
 
+    # Отрисовка поля
     def draw_field(self, field):
         for y, raw in enumerate(field):
             for x, color in enumerate(raw):
@@ -121,6 +124,7 @@ class Figures:
             self.next_figure = deepcopy(DICT[self.next_color])
             self.figure_rect = pygame.Rect(0, 0, side - 1, side - 1)
 
+    # Проверка препятствий
     def check_borders(self, figure, i):
         if self.figure[i].x < 0 or self.figure[i].x > W - 1:
             return False
@@ -128,6 +132,7 @@ class Figures:
             return False
         return True
 
+    # Движение вбок
     def move_side(self):
         figure_old = deepcopy(self.figure)
         for i in range(4):
@@ -137,6 +142,7 @@ class Figures:
                 return self.figure
         return self.figure
 
+    # Свободное падение фигур
     def move_down(self, check_time, time_limit):
         check_time += plus_time
         if check_time > time_limit:
@@ -152,6 +158,7 @@ class Figures:
                     return check_time, time_limit
         return check_time, time_limit
 
+    # Вращение фигур
     def rotation(self):
         ct = self.figure[0]
         figure_old = deepcopy(self.figure)
@@ -166,6 +173,7 @@ class Figures:
                     return self.figure
         return self.figure
 
+    # Очистка поля
     def clear_line(self):
         self.score = 0
         line, lines = H - 1, 0
@@ -297,7 +305,7 @@ while True:
             text_info = font_text.render(f"{total_score}", True, (80, 255, 100))
         screen.blit(text_info, (570, 420))
 
-        # game over
+        # end game
         for i in range(W):
             if board.field[0][i] != 0:
                 text_lose = font_text.render("YOU LOSE!", True, (80, 255, 100))
