@@ -87,7 +87,7 @@ class Menu:
 class Board:
     def __init__(self):
         window = []
-        with open("data\window.txt") as file:
+        with open("data/window.txt") as file:
             for item in file:
                 window.append(list(item)[0:-1])
             window = [[int(x) for x in y] for y in window]
