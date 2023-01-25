@@ -311,6 +311,7 @@ while True:
                 text_lose = font_text.render("YOU LOSE!", True, (80, 255, 100))
                 screen.blit(text_lose, (520, 620))
                 pygame.display.flip()
+                total_score = 0
                 pygame.time.wait(2000)
                 board.field = [[0 for i in range(W)] for i in range(H)]
 
